@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="54611b4f-7023-47b4-bfff-e92c3222dc65" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+=======
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cluster/fake_manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster/pot_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/pot_manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+    </list>
+>>>>>>> aa754fd5a83dcc5e7db9d8fa06a41da60b124df3
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +31,11 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="GOROOT" path="/usr/local/go" />
+=======
+  <component name="GOROOT" path="D:\Code\Go\GOROOT" />
+>>>>>>> aa754fd5a83dcc5e7db9d8fa06a41da60b124df3
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -37,7 +54,11 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ego" />
+>>>>>>> aa754fd5a83dcc5e7db9d8fa06a41da60b124df3
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -74,5 +95,21 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="541" y="196" key="#Go_Modules/0.0.1536.864@0.0.1536.864" timestamp="1616894697063" />
+    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1617115548868">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617115548868" />
+    <state x="496" y="129" key="FileChooserDialogImpl" timestamp="1617112249182">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="496" y="129" key="FileChooserDialogImpl/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617112249182" />
+    <state x="312" y="213" key="Registry" timestamp="1617095532722">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="312" y="213" key="Registry/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617095532722" />
+    <state x="529" y="128" width="840" height="1034" key="search.everywhere.popup" timestamp="1617095528134">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="529" y="128" width="840" height="1034" key="search.everywhere.popup/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617095528134" />
   </component>
 </project>
