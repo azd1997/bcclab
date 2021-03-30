@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54611b4f-7023-47b4-bfff-e92c3222dc65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cluster/doc.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cluster/manager.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cluster/manager_builder.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cluster/node.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/record.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster/cluster_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/pot_manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster/interface.go" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cluster/fake_manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster/pot_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/pot_manager.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/ws_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/ws_server.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +56,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="541" y="196" key="#Go_Modules/0.0.1536.864@0.0.1536.864" timestamp="1616894697063" />
+    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1617115548868">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617115548868" />
     <state x="496" y="129" key="FileChooserDialogImpl" timestamp="1617112249182">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

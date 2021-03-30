@@ -42,7 +42,8 @@ func runCliMode() {
 
 	// 1. 读取共识协议名称
 	var consensus string
-	_, err := fmt.Scanf("请指定协议类型：%s", &consensus)
+	fmt.Print("请指定协议类型：")
+	_, err := fmt.Scan(&consensus)
 	handleError(err)
 
 	// 2. 创建对应协议的Manager，并启动Manager的参数输入

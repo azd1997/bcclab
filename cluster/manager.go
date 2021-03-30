@@ -15,6 +15,13 @@ func StartManager(consensus string, mode string, reportChan, commandChan chan []
 		}
 		mInstance = pm
 		return mInstance.Run()
+	case "fake":
+		fm, err := newFakeManager(mode, reportChan, commandChan)
+		if err != nil {
+			return err
+		}
+		mInstance = fm
+		return mInstance.Run()
 	default:
 		return fmt.Errorf("unknown consensus: %s", consensus)
 	}

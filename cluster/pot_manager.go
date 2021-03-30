@@ -32,12 +32,19 @@ type PotManager struct {
 	peers map[string]Node
 }
 
+// 暂时先以fakeNode代替真实的PotNode
 func (p *PotManager) startCluster() error {
-	panic("implement me")
+	p.seeds = map[string]Node{
+		"seed01":newFakeNode(),
+	}
+	p.peers = map[string]Node{
+		"peer01":newFakeNode(),
+	}
+	return nil
 }
 
 func (p *PotManager) stopCluster() error {
-	panic("implement me")
+	return nil
 }
 
 func (p *PotManager) readParamsFromCli() error {
