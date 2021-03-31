@@ -7,7 +7,7 @@ import (
 var _ Manager = new(PotManager)
 
 func newFakeManager(mode string, reportChan, commandChan chan []byte) (Manager, error) {
-	return &PotManager{
+	return &fakeManager{
 		mode:            mode,
 		reportChan:      reportChan,
 		commandChan:     commandChan,
@@ -31,6 +31,29 @@ func (m *fakeManager) startCluster() error {
 	m.peers = map[string]Node{
 		"peer01":newFakeNode(),
 	}
+
+	m.peers["peer01"].SetReportChan(m.reportChan)
+	if err := m.peers["peer01"].Start(); err != nil {
+		return err
+	}
+
+	// 启动报告线程
+	//ticker := time.Tick(time.Second)
+	//go func() {
+	//	for {
+	//		select {
+	//		case t := <-ticker:
+	//			m.reportChan <- []byte(t.String())
+	//		}
+	//	}
+	//}()
+
+	go func() {
+		for data := range <- m.reportChan {
+			fmt.Println(string(data))
+		}
+	}()
+
 	return nil
 }
 
@@ -41,9 +64,9 @@ func (m *fakeManager) stopCluster() error {
 func (m *fakeManager) readParamsFromCli() error {
 	var err error
 	fmt.Print("请指定参数（nPeer）：")
-	_, err = fmt.Scan("%d", &m.nPeer)
+	_, err = fmt.Scanf("%d", &m.nPeer)
 	if err != nil {
-		return err
+		return fmt.Errorf("readParamsFromCli:%s", err)
 	}
 	return nil
 }
@@ -52,13 +75,15 @@ func (m *fakeManager) Run() error {
 	// 从命令行读取参数到p结构体内
 	err := m.readParamsFromCli()
 	if err != nil {
-		return err
+		return fmt.Errorf("fakeManager.Run: %s",err)
 	}
+
+	fmt.Println("参数设定完毕，准备启动集群")
 
 	// 启动集群
 	err = m.startCluster()
 	if err != nil {
-		return err
+		return fmt.Errorf("fakeManager.Run: %s",err)
 	}
 
 	return nil

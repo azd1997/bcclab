@@ -21,7 +21,12 @@ func StartManager(consensus string, mode string, reportChan, commandChan chan []
 			return err
 		}
 		mInstance = fm
-		return mInstance.Run()
+		//fmt.Println(mInstance, fm)
+		err = mInstance.Run()
+		if err != nil {
+			return fmt.Errorf("StartManager: %s", err)
+		}
+		return nil
 	default:
 		return fmt.Errorf("unknown consensus: %s", consensus)
 	}

@@ -35,16 +35,23 @@ func main()  {
 	} else {
 		printUsage()
 	}
+
+	select {
+
+	}
 }
 
 func runCliMode() {
 	// 进行终端界面下的指令输入，由于不同集群输入的参数不尽相同，交给Manager去实现
 
+	fmt.Println("cli mode")
+
 	// 1. 读取共识协议名称
 	var consensus string
 	fmt.Print("请指定协议类型：")
-	_, err := fmt.Scan(&consensus)
+	_, err := fmt.Scanln(&consensus)
 	handleError(err)
+	//fmt.Println(consensus)
 
 	// 2. 创建对应协议的Manager，并启动Manager的参数输入
 	err = cluster.StartManager(consensus, ModeCli, reportChan, commandChan)
