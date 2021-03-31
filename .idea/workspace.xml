@@ -3,18 +3,35 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="54611b4f-7023-47b4-bfff-e92c3222dc65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/record_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/report_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/ws_server_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cluster/fake_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/fake_manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster/manager_builder.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/manager_builder.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster/node.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/node.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster/pot_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/pot_manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/record.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/record.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/ws_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/ws_server.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +67,7 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ego" />
   </component>
-  <component name="RunManager" selected="Go Test.TestReportWithChanBytes in github.com/azd1997/bcclab/models">
+  <component name="RunManager" selected="Go Test.TestStartWebSocketServer in github.com/azd1997/bcclab/server">
     <configuration name="TestJson in github.com/azd1997/bcclab/models" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="bcclab" />
       <working_directory value="$PROJECT_DIR$/models" />
@@ -84,8 +101,20 @@
       <pattern value="^\QTestReportWithChanString\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestStartWebSocketServer in github.com/azd1997/bcclab/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="bcclab" />
+      <working_directory value="$PROJECT_DIR$/server" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/azd1997/bcclab/server" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestStartWebSocketServer\E$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestStartWebSocketServer in github.com/azd1997/bcclab/server" />
         <item itemvalue="Go Test.TestReportWithChanBytes in github.com/azd1997/bcclab/models" />
         <item itemvalue="Go Test.TestReportWithChanString in github.com/azd1997/bcclab/models" />
         <item itemvalue="Go Test.TestJson in github.com/azd1997/bcclab/models" />
@@ -101,12 +130,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update:利用fakeNode和fakeManager测试整体逻辑通过，接下来测试UI模式" />
+    <option name="LAST_COMMIT_MESSAGE" value="update:利用fakeNode和fakeManager测试整体逻辑通过，接下来测试UI模式" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -120,30 +165,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617155584957" />
+    <state x="300" y="0" key="CommitChangelistDialog2" timestamp="1617158014689">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="300" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617158014689" />
     <state x="496" y="129" key="FileChooserDialogImpl" timestamp="1617112249182">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="496" y="129" key="FileChooserDialogImpl/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617112249182" />
-    <state width="1483" height="119" key="GridCell.Tab.0.bottom" timestamp="1617157950561">
+    <state width="1483" height="177" key="GridCell.Tab.0.bottom" timestamp="1617161854830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1483" height="119" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
-    <state width="1483" height="119" key="GridCell.Tab.0.center" timestamp="1617157950561">
+    <state width="1483" height="177" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617161854830" />
+    <state width="1483" height="177" key="GridCell.Tab.0.center" timestamp="1617161854830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1483" height="119" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
-    <state width="1483" height="119" key="GridCell.Tab.0.left" timestamp="1617157950561">
+    <state width="1483" height="177" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617161854830" />
+    <state width="1483" height="177" key="GridCell.Tab.0.left" timestamp="1617161854830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1483" height="119" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
-    <state width="1483" height="119" key="GridCell.Tab.0.right" timestamp="1617157950561">
+    <state width="1483" height="177" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617161854830" />
+    <state width="1483" height="177" key="GridCell.Tab.0.right" timestamp="1617161854830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1483" height="119" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
+    <state width="1483" height="177" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617161854830" />
     <state x="312" y="213" key="Registry" timestamp="1617095532722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="312" y="213" key="Registry/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617095532722" />
+    <state x="261" y="101" key="Vcs.Push.Dialog.v2" timestamp="1617158049605">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="261" y="101" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617158049605" />
     <state x="529" y="128" width="840" height="1034" key="search.everywhere.popup" timestamp="1617095528134">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

@@ -119,9 +119,11 @@ func StartWebSocketServer(addr string, reportChan chan string, commandChan chan 
 	ws.server = &http.Server{Addr: addr, Handler: &ws.serveMux}
 
 	// 2. 启动websocket监听
-	if err := ws.server.ListenAndServe(); err != nil {
-		return err
-	}
+	go func() {
+		if err := ws.server.ListenAndServe(); err != nil {
+			panic(err)
+		}
+	}()
 
 	// 3. 启动websocketserver自身处理reportChan循环
 	go ws.reportLoop()

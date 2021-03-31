@@ -53,7 +53,6 @@ func (m *fakeManager) startCluster() error {
 	// 启动一个goroutine去打印节点报告内容
 	go func() {
 		for data := range m.reportChan {
-			fmt.Println("111111111111111")
 			fmt.Println("fakeManager: read reportChan: ", string(data))
 			//data = data
 		}
