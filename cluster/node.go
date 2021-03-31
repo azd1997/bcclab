@@ -8,24 +8,26 @@ import (
 
 // Node 对集群管理器管理的Node做要求
 type Node interface {
-	SetReportChan(reportChan chan []byte) error
+	SetReportChan(reportChan chan string) error
 
 	Start() error
 	Stop() error
-	Fault(faulttype string) error	// 预约最近的一段时间作恶
+	Fault(faulttype string) error // 预约最近的一段时间作恶
 }
+
 // 后续还可以添加一些细致性的属性设置、动作设定
 
-
-
 type fakeNode struct {
-	reportChan chan []byte
+	id string
+
+	reportChan chan string
 
 	done chan struct{}
 }
 
-func newFakeNode() *fakeNode {
+func newFakeNode(id string) *fakeNode {
 	return &fakeNode{
+		id:         id,
 		reportChan: nil,
 		done:       make(chan struct{}),
 	}
@@ -36,8 +38,6 @@ func (f *fakeNode) Start() error {
 	return nil
 }
 
-
-
 func (f *fakeNode) Stop() error {
 	f.done <- struct{}{}
 	return nil
@@ -45,17 +45,19 @@ func (f *fakeNode) Stop() error {
 
 // 定时报告一些内容
 func (f *fakeNode) loop() {
-	ticker := time.Tick(time.Second)
+	ticker := time.Tick(time.Duration(10) * time.Second)
 	for {
 		select {
-		case <- f.done:
+		case <-f.done:
 			return
-		case t := <- ticker:
-			f.report(models.PotNodeStateSwitchRecord{
-				Time:     t.UnixNano(),
-				NodeId:   "peer01",
-				NewState: "xiatian",
-			})
+		case t := <-ticker:
+			record := &models.FakeNodeFaultRecord{
+				Time:   t.UnixNano(),
+				NodeId: f.id,
+			}
+			if err := f.report(record); err != nil {
+				fmt.Println("fakeNode.loop: ", err)
+			}
 		}
 	}
 }
@@ -67,7 +69,8 @@ func (f *fakeNode) report(record models.Record) error {
 	if err != nil {
 		return err
 	}
-	f.reportChan <- data
+	fmt.Println("fakeNode.loop: record: ", string(data))
+	f.reportChan <- string(data)
 	return nil
 }
 
@@ -87,19 +90,16 @@ func (f *fakeNode) report(record models.Record) error {
 //
 //type Record map[string]string
 
-
-
 // 标准的实现应该用once保证只调用一次
-func (f *fakeNode) SetReportChan(reportChan chan []byte) error {
+func (f *fakeNode) SetReportChan(reportChan chan string) error {
 	f.reportChan = reportChan
 	return nil
 }
 
 func (f *fakeNode) Fault(faulttype string) error {
 	fmt.Printf("fault: %s\n", faulttype)
-	return f.report(models.FakeNodeFaultRecord{
+	return f.report(&models.FakeNodeFaultRecord{
 		Time:   time.Now().UnixNano(),
 		NodeId: "peer01",
 	})
 }
-

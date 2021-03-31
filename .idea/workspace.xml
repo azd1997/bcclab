@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54611b4f-7023-47b4-bfff-e92c3222dc65" name="Default Changelist" comment="">
-<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/models/record_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/report_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-=======
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cluster/fake_manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster/fake_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/fake_manager.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cluster/manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/manager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster/manager_builder.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/manager_builder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cluster/node.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/node.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cluster/pot_manager.go" beforeDir="false" afterPath="$PROJECT_DIR$/cluster/pot_manager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/record.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/record.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/ws_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/ws_server.go" afterDir="false" />
     </list>
->>>>>>> aa754fd5a83dcc5e7db9d8fa06a41da60b124df3
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,11 +29,7 @@
       </list>
     </option>
   </component>
-<<<<<<< HEAD
-  <component name="GOROOT" path="/usr/local/go" />
-=======
   <component name="GOROOT" path="D:\Code\Go\GOROOT" />
->>>>>>> aa754fd5a83dcc5e7db9d8fa06a41da60b124df3
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -54,25 +48,51 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-<<<<<<< HEAD
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-=======
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ego" />
->>>>>>> aa754fd5a83dcc5e7db9d8fa06a41da60b124df3
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RunManager" selected="Go Test.TestReportWithChanBytes in github.com/azd1997/bcclab/models">
+    <configuration name="TestJson in github.com/azd1997/bcclab/models" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="bcclab" />
+      <working_directory value="$PROJECT_DIR$/models" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/azd1997/bcclab/models" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestJson\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestReportWithChanBytes in github.com/azd1997/bcclab/models" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="bcclab" />
+      <working_directory value="$PROJECT_DIR$/models" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/azd1997/bcclab/models" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestReportWithChanBytes\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestReportWithChanString in github.com/azd1997/bcclab/models" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="bcclab" />
+      <working_directory value="$PROJECT_DIR$/models" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/azd1997/bcclab/models" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestReportWithChanString\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <item itemvalue="Go Test.TestReportWithChanBytes in github.com/azd1997/bcclab/models" />
+        <item itemvalue="Go Test.TestReportWithChanString in github.com/azd1997/bcclab/models" />
+        <item itemvalue="Go Test.TestJson in github.com/azd1997/bcclab/models" />
       </list>
-    </option>
+    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -86,6 +106,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -95,14 +116,30 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="541" y="196" key="#Go_Modules/0.0.1536.864@0.0.1536.864" timestamp="1616894697063" />
-    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1617115548868">
+    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1617155584957">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617115548868" />
+    <state x="501" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617155584957" />
     <state x="496" y="129" key="FileChooserDialogImpl" timestamp="1617112249182">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="496" y="129" key="FileChooserDialogImpl/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617112249182" />
+    <state width="1483" height="119" key="GridCell.Tab.0.bottom" timestamp="1617157950561">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1483" height="119" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
+    <state width="1483" height="119" key="GridCell.Tab.0.center" timestamp="1617157950561">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1483" height="119" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
+    <state width="1483" height="119" key="GridCell.Tab.0.left" timestamp="1617157950561">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1483" height="119" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
+    <state width="1483" height="119" key="GridCell.Tab.0.right" timestamp="1617157950561">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1483" height="119" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.2560.1440@0.0.1536.864" timestamp="1617157950561" />
     <state x="312" y="213" key="Registry" timestamp="1617095532722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

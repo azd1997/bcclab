@@ -6,7 +6,7 @@ import (
 
 var mInstance Manager
 
-func StartManager(consensus string, mode string, reportChan, commandChan chan []byte) error {
+func StartManager(consensus string, mode string, reportChan, commandChan chan string) error {
 	switch consensus {
 	case "pot":
 		pm, err := newPotManager(mode, reportChan, commandChan)
@@ -49,6 +49,3 @@ type Manager interface {
 	//// Cli 每种Manager自定义的终端输入参数的方法
 	//CliAndStartCluster() error
 }
-
-
-

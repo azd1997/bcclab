@@ -11,19 +11,18 @@ import (
 
 const (
 	ModeCli string = "cli"
-	ModeUi string = "ui"
+	ModeUi  string = "ui"
 )
-
 
 var (
 	flagMode = flag.String("mode", "cli", "specify running mode (cli or ui)")
 
-	reportChan = make(chan []byte, 100)
-	commandChan = make(chan []byte, 100)
+	reportChan  = make(chan string, 100)
+	commandChan = make(chan string, 100)
 )
 
 // main函数逻辑：启动websocket服务器 -> 启动节点管理器
-func main()  {
+func main() {
 
 	// 解析命令行程序
 	flag.Parse()
@@ -36,9 +35,7 @@ func main()  {
 		printUsage()
 	}
 
-	select {
-
-	}
+	select {}
 }
 
 func runCliMode() {

@@ -15,6 +15,10 @@ func data2hashhex8(data []byte) string {
 	return hashhex8
 }
 
+func genId(data []byte, unixnano int64) string {
+	return strconv.Itoa(int(unixnano)) + "-" + data2hashhex8(data)
+}
+
 type Record interface {
 	// 转为Json格式输出，转成json之前一定加上消息类型
 	Json() ([]byte, error)
@@ -28,13 +32,13 @@ type Record interface {
 
 type PotNodeStateSwitchRecord struct {
 	// 生成Json时自动生成
-	RecordId string	// Record哈希用作标识，除RecordId以外全部内容
+	RecordId   string // Record哈希用作标识，除RecordId以外全部内容
 	RecordType string
 
 	// 人工填入
-	Time int64	// 时间
-	NodeId string	// 节点id
-	NewState string	// 新状态
+	Time     int64  // 时间
+	NodeId   string // 节点id
+	NewState string // 新状态
 }
 
 // 正常来说，这些API都只会使用一次，所以无所谓会不会浪费些资源了
@@ -44,7 +48,7 @@ func (r PotNodeStateSwitchRecord) Json() ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	r.RecordId = strconv.Itoa(int(r.Time)) + data2hashhex8(data)
+	r.RecordId = genId(data, r.Time)
 
 	return json.Marshal(r)
 }
@@ -55,7 +59,7 @@ func (r PotNodeStateSwitchRecord) ID() string {
 	if err != nil {
 		return ""
 	}
-	r.RecordId = strconv.Itoa(int(r.Time)) + data2hashhex8(data)
+	r.RecordId = genId(data, r.Time)
 	return r.RecordId
 }
 
@@ -66,42 +70,41 @@ func (r PotNodeStateSwitchRecord) Type() string {
 /////////////////////////////////////////////////////////////////
 
 type PotNodeSendMsgRecord struct {
-
 }
 
 ////////////////////////////////////////////////////////////////
 
 type FakeNodeFaultRecord struct {
 	// 生成Json时自动生成
-	RecordId string	// Record哈希用作标识，除RecordId以外全部内容
+	RecordId   string // Record哈希用作标识，除RecordId以外全部内容
 	RecordType string
 
 	// 人工填入
-	Time int64	// 时间
-	NodeId string	// 节点id
+	Time   int64  // 时间
+	NodeId string // 节点id
 }
 
-func (r FakeNodeFaultRecord) Json() ([]byte, error) {
+func (r *FakeNodeFaultRecord) Json() ([]byte, error) {
 	r.RecordType = "FakeNodeFault"
 	data, err := json.Marshal(r)
 	if err != nil {
 		return nil, err
 	}
-	r.RecordId = strconv.Itoa(int(r.Time)) + data2hashhex8(data)
+	r.RecordId = genId(data, r.Time)
 
 	return json.Marshal(r)
 }
 
-func (r FakeNodeFaultRecord) ID() string {
+func (r *FakeNodeFaultRecord) ID() string {
 	r.RecordType = "FakeNodeFault"
 	data, err := json.Marshal(r)
 	if err != nil {
 		return ""
 	}
-	r.RecordId = strconv.Itoa(int(r.Time)) + data2hashhex8(data)
+	r.RecordId = genId(data, r.Time)
 	return r.RecordId
 }
 
-func (r FakeNodeFaultRecord) Type() string {
+func (r *FakeNodeFaultRecord) Type() string {
 	return "FakeNodeFault"
 }

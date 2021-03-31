@@ -9,23 +9,23 @@ import (
 
 var _ Manager = new(PotManager)
 
-func newPotManager(mode string, reportChan, commandChan chan []byte) (Manager, error) {
+func newPotManager(mode string, reportChan, commandChan chan string) (Manager, error) {
 	return &PotManager{
-		mode:            mode,
-		reportChan:      reportChan,
-		commandChan:     commandChan,
+		mode:        mode,
+		reportChan:  reportChan,
+		commandChan: commandChan,
 	}, nil
 }
 
 type PotManager struct {
-	mode string
-	reportChan, commandChan chan []byte
+	mode                    string
+	reportChan, commandChan chan string
 
 	// 参数区
-	nPeer, nSeed int
-	shutdownAtTi int
+	nPeer, nSeed    int
+	shutdownAtTi    int
 	shutdownAtTiMap map[int]int
-	cheatAtTiMap map[int]int
+	cheatAtTiMap    map[int]int
 
 	// 集群管理区
 	seeds map[string]Node
@@ -35,10 +35,10 @@ type PotManager struct {
 // 暂时先以fakeNode代替真实的PotNode
 func (p *PotManager) startCluster() error {
 	p.seeds = map[string]Node{
-		"seed01":newFakeNode(),
+		"seed01": newFakeNode("seed01"),
 	}
 	p.peers = map[string]Node{
-		"peer01":newFakeNode(),
+		"peer01": newFakeNode("peer01"),
 	}
 	return nil
 }
@@ -66,8 +66,8 @@ func (p *PotManager) readParamsFromCli() error {
 	}
 	var pairStr string
 	var pair []string
- 	var peerno, ti, oldTi int
-	for i:=0; i<len(satmSlice); i++ {
+	var peerno, ti, oldTi int
+	for i := 0; i < len(satmSlice); i++ {
 		pairStr = satmSlice[i]
 		pair = strings.Split(pairStr, ":")
 		if len(pair) != 2 {
@@ -82,7 +82,7 @@ func (p *PotManager) readParamsFromCli() error {
 			return errors.New("invalid shutdownAtTiMap params")
 		}
 		oldTi = p.shutdownAtTiMap[peerno]
-		if (oldTi > 0 && ti < oldTi) || (ti > 0) {	// 这两种情况下才用ti，也就是说设置值会取较小的那一个正数
+		if (oldTi > 0 && ti < oldTi) || (ti > 0) { // 这两种情况下才用ti，也就是说设置值会取较小的那一个正数
 			p.shutdownAtTiMap[peerno] = ti
 		}
 	}
@@ -96,7 +96,7 @@ func (p *PotManager) readParamsFromCli() error {
 	if p.cheatAtTiMap == nil {
 		p.cheatAtTiMap = make(map[int]int)
 	}
-	for i:=0; i<len(catmSlice); i++ {
+	for i := 0; i < len(catmSlice); i++ {
 		pairStr = catmSlice[i]
 		pair = strings.Split(pairStr, ":")
 		if len(pair) != 2 {
@@ -111,7 +111,7 @@ func (p *PotManager) readParamsFromCli() error {
 			return errors.New("invalid cheatAtTiMap params")
 		}
 		oldTi = p.shutdownAtTiMap[peerno]
-		if (oldTi > 0 && ti < oldTi) || (ti > 0) {	// 这两种情况下才用ti，也就是说设置值会取较小的那一个正数
+		if (oldTi > 0 && ti < oldTi) || (ti > 0) { // 这两种情况下才用ti，也就是说设置值会取较小的那一个正数
 			p.shutdownAtTiMap[peerno] = ti
 		}
 	}
@@ -134,6 +134,3 @@ func (p *PotManager) Run() error {
 
 	return nil
 }
-
-
-

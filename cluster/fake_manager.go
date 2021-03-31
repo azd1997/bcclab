@@ -6,18 +6,18 @@ import (
 
 var _ Manager = new(PotManager)
 
-func newFakeManager(mode string, reportChan, commandChan chan []byte) (Manager, error) {
+func newFakeManager(mode string, reportChan, commandChan chan string) (Manager, error) {
 	return &fakeManager{
-		mode:            mode,
-		reportChan:      reportChan,
-		commandChan:     commandChan,
+		mode:        mode,
+		reportChan:  reportChan,
+		commandChan: commandChan,
 	}, nil
 }
 
 // fakeManager 用于测试程序整体的逻辑是否正确
 type fakeManager struct {
-	mode string
-	reportChan, commandChan chan []byte
+	mode                    string
+	reportChan, commandChan chan string
 
 	// 参数区
 	nPeer int
@@ -29,10 +29,12 @@ type fakeManager struct {
 // 暂时先以fakeNode代替真实的PotNode
 func (m *fakeManager) startCluster() error {
 	m.peers = map[string]Node{
-		"peer01":newFakeNode(),
+		"peer01": newFakeNode("peer01"),
 	}
 
-	m.peers["peer01"].SetReportChan(m.reportChan)
+	if err := m.peers["peer01"].SetReportChan(m.reportChan); err != nil {
+		return fmt.Errorf("startCluster: %s", err)
+	}
 	if err := m.peers["peer01"].Start(); err != nil {
 		return err
 	}
@@ -48,9 +50,12 @@ func (m *fakeManager) startCluster() error {
 	//	}
 	//}()
 
+	// 启动一个goroutine去打印节点报告内容
 	go func() {
-		for data := range <- m.reportChan {
-			fmt.Println(string(data))
+		for data := range m.reportChan {
+			fmt.Println("111111111111111")
+			fmt.Println("fakeManager: read reportChan: ", string(data))
+			//data = data
 		}
 	}()
 
@@ -75,7 +80,7 @@ func (m *fakeManager) Run() error {
 	// 从命令行读取参数到p结构体内
 	err := m.readParamsFromCli()
 	if err != nil {
-		return fmt.Errorf("fakeManager.Run: %s",err)
+		return fmt.Errorf("fakeManager.Run: %s", err)
 	}
 
 	fmt.Println("参数设定完毕，准备启动集群")
@@ -83,7 +88,7 @@ func (m *fakeManager) Run() error {
 	// 启动集群
 	err = m.startCluster()
 	if err != nil {
-		return fmt.Errorf("fakeManager.Run: %s",err)
+		return fmt.Errorf("fakeManager.Run: %s", err)
 	}
 
 	return nil
