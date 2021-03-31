@@ -3,12 +3,10 @@ package server
 
 import (
 	"errors"
+	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
 	"strings"
-	"sync"
-
-	"github.com/gorilla/websocket"
 )
 
 const (
@@ -17,17 +15,21 @@ const (
 )
 
 var (
-	upgrader = websocket.Upgrader{} // 使用默认参数
+	upgrader = websocket.Upgrader{
+		CheckOrigin: func(r *http.Request) bool {	// 对访问的主机一概放行
+			return true
+		},
+	} // 使用默认参数
 )
 
 // websocketServer websocket服务器
+// 限制连接数量为1
 type websocketServer struct {
 	serveMux http.ServeMux
 	server   *http.Server
 	router   string // 监听路由
 
-	wsconn *websocket.Conn // 需要注意的是该Conn只支持单读单写。不能并发写或者并发读
-	wlock  sync.Mutex      // 因为有两个地方需要写消息，所以整个写锁，读锁就不整了
+	wsconn *wsConn
 
 	reportChan  chan string // node的报告都塞到这个chan
 	commandChan chan string // 前端UI给的指令都写到这个chan
@@ -42,6 +44,12 @@ func (ws *websocketServer) stop() {
 
 // 将请求中携带的文字内容传出
 func (ws *websocketServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	// 只允许一个连接
+	if ws.wsconn != nil {
+		w.WriteHeader(404)
+		w.Write([]byte("BccLab server只允许一个客户端连接"))
+	}
+
 	c, err := upgrader.Upgrade(w, r, http.Header{
 		"protocol": []string{"bcclab-json"},
 	})
@@ -49,12 +57,15 @@ func (ws *websocketServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		log.Print("upgrade:", err)
 		return
 	}
+	log.Println("ui conn: ", c.RemoteAddr())
 	defer c.Close()
-	ws.wsconn = c
+	if ws.wsconn == nil {
+		ws.wsconn = &wsConn{conn: c}
+	}
 
 	for {
 		// 虽然有ReadJSON方法，但是不建议在这里解析，server只做通信的事
-		mt, message, err := c.ReadMessage() // messgae为json文本消息
+		mt, message, err := ws.wsconn.ReadMessage() // messgae为json文本消息
 		if err != nil {
 			log.Println("read:", err)
 			break
@@ -70,18 +81,12 @@ func (ws *websocketServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		// 利用pong回复已收到消息，但命令消息的执行结果没法直接回复
 		// 1是因为丢给chan
 		// 2是因为有些命令的执行结果需要一段时间，不可能在这里阻塞它
-		err = ws.write(websocket.PongMessage, nil)
+		err = ws.wsconn.WriteMessage(websocket.PongMessage, nil)
 		if err != nil {
 			log.Println("pong:", err)
 			break
 		}
 	}
-}
-
-func (ws *websocketServer) write(mt int, msg []byte) error {
-	ws.wlock.Lock()
-	ws.wlock.Unlock()
-	return ws.wsconn.WriteMessage(mt, msg)
 }
 
 func (ws *websocketServer) reportLoop() {
@@ -92,7 +97,8 @@ func (ws *websocketServer) reportLoop() {
 			log.Println("report loop stopped")
 			return
 		case msg := <-ws.reportChan:
-			err := ws.write(websocket.TextMessage, []byte(msg))
+			if ws.wsconn == nil {continue}	// 还未建立连接则丢弃报告
+			err := ws.wsconn.WriteMessage(websocket.TextMessage, []byte(msg))
 			if err != nil {
 				log.Println("write:", err)
 				break

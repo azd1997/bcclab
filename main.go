@@ -56,9 +56,16 @@ func runCliMode() {
 }
 
 func runUiMode() {
+	fmt.Println("ui mode")
+
 	// 1. 指定本机监听地址
 	var addr string
-	_, err := fmt.Scanf("请输入服务器监听地址（置空则默认为localhost:7777）：%s", &addr)
+	fmt.Print("请输入服务器监听地址（置空则默认为localhost:7777）：")
+	_, err := fmt.Scanln(&addr)
+	if err != nil && err.Error() == "unexpected newline" {	// 用户直接回车不输入的情况下
+		addr = ""
+		err = nil
+	}
 	handleError(err)
 
 	// 2. 启动websocket服务器
